@@ -1,4 +1,26 @@
-import random 
+import random
+
+#quicksort function
+def quick_sort(array):
+    less = []
+    equal = []
+    greater = []
+
+    if len(array) > 1:
+        pivot = array[0]
+        for x in array:
+            if x < pivot:
+                less.append(x)
+            elif x == pivot:
+                equal.append(x)
+            elif x > pivot:
+                greater.append(x)
+        # Don't forget to return something!
+        return quick_sort(less)+equal+quick_sort(greater)  # Just use the + operator to join lists
+    # Note that you want equal ^^^^^ not pivot
+    else:  # You need to hande the part at the end of the recursion - when you only have one element in your array, just return the array.
+        return array 
+
 #creating txt file
 f=open("baza.txt","w+")
 
@@ -11,3 +33,6 @@ for i in range(10):
     f.write("%d\r\n" % x)
 
 print(base_array)
+
+sorted_array=quick_sort(base_array)
+print(sorted_array)
