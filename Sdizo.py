@@ -21,6 +21,26 @@ def quick_sort(array):
     else:  # You need to hande the part at the end of the recursion - when you only have one element in your array, just return the array.
         return array 
 
+#bubblesort function
+def bubble_sort(array):
+
+   #Setting the range for comparison (first round: n, second round: n-1  and so on)
+   for i in range(len(array)-1,0,-1):
+
+      #Comparing within set range
+       for j in range(i):
+
+           #Comparing element with its right side neighbor
+           if array[j] > array[j+1]:
+
+               #swapping
+               temp = array[j]
+               array[j] = array[j+1]
+               array[j+1] = temp
+
+   return array
+
+
 #creating txt file
 f=open("baza.txt","w+")
 
@@ -43,3 +63,12 @@ sorted_array=quick_sort(base_array)
 for item in sorted_array:
     f_out.write("%d\r\n" % item)
 print(sorted_array)
+f_out.close()
+
+#bubblesorting and appending result to file
+f_outb=open("bubblesorted.txt", "w+")
+bsorted_array=bubble_sort(base_array)
+for item in bsorted_array:
+    f_outb.write("%d\r\n" % item)
+print(bsorted_array)
+f_outb.close()
