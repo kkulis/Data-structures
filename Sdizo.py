@@ -32,7 +32,14 @@ for i in range(10):
     base_array.append(x)
     f.write("%d\r\n" % x)
 
+#closing file
+f.close()
+
 print(base_array)
 
+#quicksorting and appending result to file
+f_out=open("quicksorted.txt", "w+")
 sorted_array=quick_sort(base_array)
+for item in sorted_array:
+    f_out.write("%d\r\n" % item)
 print(sorted_array)
