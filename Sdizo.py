@@ -1,5 +1,6 @@
 import random
 import time
+from config import *
 
 #quicksort function
 def quick_sort(array):
@@ -48,8 +49,8 @@ f=open("baza.txt","w+")
 #adding numbers to file and into list
 base_array=[]
 
-for i in range(1000):
-    x=random.randint(1,1001)
+for i in range(number_of_numbers):
+    x=random.randint(1,range_of_numbers)
     base_array.append(x)
     f.write("%d\r\n" % x)
 
