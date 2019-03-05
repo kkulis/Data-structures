@@ -1,6 +1,9 @@
 import random
 import time
 from config import *
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
 
 #quicksort function
 def quick_sort(array):
@@ -45,25 +48,47 @@ def bubble_sort(array):
 
 #creating txt file
 f=open("baza.txt","w+")
+f_out=open("quicksorted.txt", "w+")
+#f_outb=open("bubblesorted.txt", "w+")
 
-#adding numbers to file and into list
+#creating arrays
 base_array=[]
+q_times_array=[]
 
+#generating numbers, quicksorting, time measuring, appending 
 for i in range(number_of_numbers):
     x=random.randint(1,range_of_numbers)
     base_array.append(x)
     f.write("%d\r\n" % x)
+    q_start=time. time()
+    sorted_array=quick_sort(base_array)
+    q_end=time. time()
+    q_time=q_end-q_start
+    q_times_array.append(q_time)
+    if i == number_of_numbers-1:
+        for item in sorted_array:
+            f_out.write("%d\r\n" % item)
+#print(q_times_array)
 
-#closing file
+
+#plotting
+x1=np.arange(0,number_of_numbers,1)
+fig, ax = plt.subplots()
+ax.plot(x1,q_times_array)
+plt.show()
+
+
+
+""" #closing file
 f.close()
+f_out.close()
 
 ##print(base_array)
 
 #quicksorting, measuring time and appending result to file
 f_out=open("quicksorted.txt", "w+")
 q_start = time. time()
-for i in range(number_of_iterations):
-    sorted_array=quick_sort(base_array)
+sorted_array=quick_sort(base_array)
 q_end = time. time()
 q_time=q_end-q_start
 print("quicksort time: %f" %q_time)
@@ -75,12 +100,11 @@ f_out.close()
 #bubblesorting, measuring time and appending result to file
 f_outb=open("bubblesorted.txt", "w+")
 b_start=time. time()
-for i in range(number_of_iterations):
-    bsorted_array=bubble_sort(base_array)
+bsorted_array=bubble_sort(base_array)
 b_end=time. time()
 b_time=b_end-b_start
 print("bubblesort time: %f" %b_time)
 for item in bsorted_array:
     f_outb.write("%d\r\n" % item)
 ##print(bsorted_array)
-f_outb.close()
+f_outb.close() """
