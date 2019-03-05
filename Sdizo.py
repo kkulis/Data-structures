@@ -62,7 +62,8 @@ f.close()
 #quicksorting, measuring time and appending result to file
 f_out=open("quicksorted.txt", "w+")
 q_start = time. time()
-sorted_array=quick_sort(base_array)
+for i in range(number_of_iterations):
+    sorted_array=quick_sort(base_array)
 q_end = time. time()
 q_time=q_end-q_start
 print("quicksort time: %f" %q_time)
@@ -74,7 +75,8 @@ f_out.close()
 #bubblesorting, measuring time and appending result to file
 f_outb=open("bubblesorted.txt", "w+")
 b_start=time. time()
-bsorted_array=bubble_sort(base_array)
+for i in range(number_of_iterations):
+    bsorted_array=bubble_sort(base_array)
 b_end=time. time()
 b_time=b_end-b_start
 print("bubblesort time: %f" %b_time)
