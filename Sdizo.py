@@ -1,4 +1,5 @@
 import random
+import time
 
 #quicksort function
 def quick_sort(array):
@@ -47,7 +48,7 @@ f=open("baza.txt","w+")
 #adding numbers to file and into list
 base_array=[]
 
-for i in range(100):
+for i in range(1000):
     x=random.randint(1,1001)
     base_array.append(x)
     f.write("%d\r\n" % x)
@@ -55,20 +56,28 @@ for i in range(100):
 #closing file
 f.close()
 
-print(base_array)
+##print(base_array)
 
-#quicksorting and appending result to file
+#quicksorting, measuring time and appending result to file
 f_out=open("quicksorted.txt", "w+")
+q_start = time. time()
 sorted_array=quick_sort(base_array)
+q_end = time. time()
+q_time=q_end-q_start
+print("quicksort time: %f" %q_time)
 for item in sorted_array:
     f_out.write("%d\r\n" % item)
-print(sorted_array)
+##print(sorted_array)
 f_out.close()
 
-#bubblesorting and appending result to file
+#bubblesorting, measuring time and appending result to file
 f_outb=open("bubblesorted.txt", "w+")
+b_start=time. time()
 bsorted_array=bubble_sort(base_array)
+b_end=time. time()
+b_time=b_end-b_start
+print("bubblesort time: %f" %b_time)
 for item in bsorted_array:
     f_outb.write("%d\r\n" % item)
-print(bsorted_array)
+##print(bsorted_array)
 f_outb.close()
