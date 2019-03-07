@@ -1,9 +1,11 @@
 import random
 import time
+import math
 from config import *
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import pdb
 
 #quicksort function
 def quick_sort(array):
@@ -49,6 +51,7 @@ def bubble_sort(array):
 #creating txt file
 f=open("baza.txt","w+")
 f_out=open("quicksorted.txt", "w+")
+f_times=open('q_times.txt', "w+")
 #f_outb=open("bubblesorted.txt", "w+")
 
 #creating arrays
@@ -63,20 +66,33 @@ for i in range(number_of_numbers):
     q_start=time. time()
     sorted_array=quick_sort(base_array)
     q_end=time. time()
-    q_time=q_end-q_start
-    q_times_array.append("%.3f" %q_time)
+    q_time=100000*(q_end-q_start)
+    q_times_array.append("%f" %q_time)
+    f_times.write("%f \r\n" %q_time)
     if i == number_of_numbers-1:
         for item in sorted_array:
             f_out.write("%d\r\n" % item)
 #print(q_times_array)
+f_out.close()
+f.close()
+f_times.close()
+
+#nlog(n)
+log_array=[]
+for n in range(1,number_of_numbers):
+    y=n*math.log10(n)
+    log_array.append(y)
+#appending first element to array (0log(0))
+log_array.insert(0,0)
+#print(log_array)
 
 
 #plotting
-q_times_array=[x * 10000 for x in q_times_array]
 x1=np.arange(0,number_of_numbers,1)
-fig, ax = plt.subplots()
-ax.scatter(x1,q_times_array)
+#fig, ax = plt.subplots()
+plt.plot(x1,q_times_array, 'b', x1, log_array, 'ro')
 plt.show()
+
 
 
 
