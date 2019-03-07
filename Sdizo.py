@@ -64,7 +64,7 @@ for i in range(number_of_numbers):
     sorted_array=quick_sort(base_array)
     q_end=time. time()
     q_time=q_end-q_start
-    q_times_array.append(q_time)
+    q_times_array.append("%.3f" %q_time)
     if i == number_of_numbers-1:
         for item in sorted_array:
             f_out.write("%d\r\n" % item)
@@ -72,9 +72,10 @@ for i in range(number_of_numbers):
 
 
 #plotting
+q_times_array=[x * 10000 for x in q_times_array]
 x1=np.arange(0,number_of_numbers,1)
 fig, ax = plt.subplots()
-ax.plot(x1,q_times_array)
+ax.scatter(x1,q_times_array)
 plt.show()
 
 
