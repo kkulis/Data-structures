@@ -5,7 +5,7 @@ from config import *
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-import pdb
+
 
 #quicksort function
 def quick_sort(array):
@@ -66,7 +66,7 @@ for i in range(number_of_numbers):
     q_start=time. time()
     sorted_array=quick_sort(base_array)
     q_end=time. time()
-    q_time=100000*(q_end-q_start)
+    q_time=q_end-q_start
     q_times_array.append("%f" %q_time)
     f_times.write("%f \r\n" %q_time)
     if i == number_of_numbers-1:
@@ -80,17 +80,24 @@ f_times.close()
 #nlog(n)
 log_array=[]
 for n in range(1,number_of_numbers):
-    y=n*math.log10(n)
+    y=n*math.log10(n)/20
     log_array.append(y)
 #appending first element to array (0log(0))
 log_array.insert(0,0)
 #print(log_array)
 
+#n_array=[]
+#for n in range(1,number_of_numbers):
+    #y=n**2
+    #n_array.append(y)
+#appending first element to array (0log(0))
+#log_array.insert(0,0)
+#print(n_array)
 
 #plotting
-x1=np.arange(0,number_of_numbers,1)
+#x1=np.arange(0,number_of_numbers,1)
 #fig, ax = plt.subplots()
-plt.plot(x1,q_times_array, 'b', x1, log_array, 'ro')
+plt.plot(q_times_array, 'bo', log_array, 'r')
 plt.show()
 
 
