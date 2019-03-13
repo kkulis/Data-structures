@@ -90,7 +90,7 @@ f_times.close()
 #nlog(n)
 log_array=[]
 for n in range(1,number_of_numbers):
-    y=n*math.log10(n)/4
+    y=n*math.log10(n)/10
     log_array.append(y)
 #appending first element to array (0log(0))
 log_array.insert(0,0)
@@ -105,9 +105,12 @@ log_array.insert(0,0)
 #print(n_array)
 
 #plotting
-#x1=np.arange(0,number_of_numbers,1)
-#fig, ax = plt.subplots()
-#ax.yaxis.set_major_locator(mticks.MultipleLocator(.0025))
+fig=plt.figure()
+ax=fig.add_subplot(111)
+plt.yticks(np.arange(0,0.002))
+plt.title("quicksort (list)")
+plt.xlabel("number of operations")
+plt.ylabel("time(s)")
 plt.plot(q_times_array, 'bo', log_array, 'r')
 plt.show()
 

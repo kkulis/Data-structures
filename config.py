@@ -1,2 +1,2 @@
-number_of_numbers = 100
+number_of_numbers = 1000
 range_of_numbers= 1000
