@@ -5,6 +5,7 @@ from config import *
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticks
 
 
 #quicksort function
@@ -58,6 +59,7 @@ f_times=open('q_times.txt', "w+")
 base_array=[]
 q_times_array=[]
 
+
 #generating numbers, quicksorting, time measuring, appending 
 for i in range(number_of_numbers):
     x=random.randint(1,range_of_numbers)
@@ -97,6 +99,7 @@ log_array.insert(0,0)
 #plotting
 #x1=np.arange(0,number_of_numbers,1)
 #fig, ax = plt.subplots()
+#ax.yaxis.set_major_locator(mticks.MultipleLocator(.0025))
 plt.plot(q_times_array, 'bo', log_array, 'r')
 plt.show()
 
