@@ -58,23 +58,31 @@ f_times=open('q_times.txt', "w+")
 #creating arrays
 base_array=[]
 q_times_array=[]
-
+av_array=[]
 
 #generating numbers, quicksorting, time measuring, appending 
 for i in range(number_of_numbers):
     x=random.randint(1,range_of_numbers)
     base_array.append(x)
     f.write("%d\r\n" % x)
-    q_start=time. time()
-    sorted_array=quick_sort(base_array)
-    q_end=time. time()
-    q_time=q_end-q_start
-    q_times_array.append("%f" %q_time)
-    f_times.write("%f \r\n" %q_time)
-    if i == number_of_numbers-1:
-        for item in sorted_array:
-            f_out.write("%d\r\n" % item)
+    for j in range(100):
+        q_start=time. time()
+        sorted_array=quick_sort(base_array)
+        q_end=time. time()
+        q_time=q_end-q_start
+        av_array.append(q_time)
+        if(i==number_of_numbers-1 and j==99):
+            for item in sorted_array:
+                f_out.write("%d\r\n" %item)
+    av_time=sum(av_array)/len(av_array)
+    del av_array[:]
+    q_times_array.append("%f" %av_time)
+    f_times.write("%f \r\n" %av_time)
+    #if i == number_of_numbers-1:
+        #for item in sorted_array:
+            #f_out.write("%d\r\n" % item)
 #print(q_times_array)
+#print(av_array)
 f_out.close()
 f.close()
 f_times.close()
@@ -82,7 +90,7 @@ f_times.close()
 #nlog(n)
 log_array=[]
 for n in range(1,number_of_numbers):
-    y=n*math.log10(n)/20
+    y=n*math.log10(n)/4
     log_array.append(y)
 #appending first element to array (0log(0))
 log_array.insert(0,0)
