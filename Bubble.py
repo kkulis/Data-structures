@@ -106,7 +106,7 @@ for n in range(1,number_of_numbers):
 #plotting
 fig=plt.figure()
 ax=fig.add_subplot(111)
-#plt.yticks(np.arange(0,0.002))
+plt.yticks(np.arange(0,0.002,))
 plt.title("quicksort (list)")
 plt.xlabel("number of operations")
 plt.ylabel("time(s)")
