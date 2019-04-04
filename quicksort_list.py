@@ -59,9 +59,10 @@ f_times=open('q_times.txt', "w+")
 base_array=[]
 q_times_array=[]
 av_array=[]
+q_whole_start=time. time()
 
 #generating numbers, quicksorting, time measuring, appending 
-for i in range(number_of_numbers):
+for i in range(0,number_of_numbers):
     x=random.randint(1,range_of_numbers)
     base_array.append(x)
     f.write("%d\r\n" % x)
@@ -83,6 +84,9 @@ for i in range(number_of_numbers):
             #f_out.write("%d\r\n" % item)
 #print(q_times_array)
 #print(av_array)
+q_whole_end=time. time()
+q_whole=q_whole_end-q_whole_start
+print(q_whole)
 f_out.close()
 f.close()
 f_times.close()
@@ -90,7 +94,7 @@ f_times.close()
 #nlog(n)
 log_array=[]
 for n in range(1,number_of_numbers):
-    y=n*math.log10(n)/10
+    y=n*math.log10(n)/4
     log_array.append(y)
 #appending first element to array (0log(0))
 log_array.insert(0,0)
@@ -111,7 +115,9 @@ plt.yticks(np.arange(0,0.002))
 plt.title("quicksort (list)")
 plt.xlabel("number of operations")
 plt.ylabel("time(s)")
-plt.plot(q_times_array, 'bo', log_array, 'r')
+plt.plot(q_times_array, 'bo', label='time')
+plt.plot(log_array, 'r', label='n(logn)')
+plt.legend(loc='upper left')
 plt.show()
 
 

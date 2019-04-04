@@ -58,7 +58,7 @@ f_outb=open("bubblesorted.txt", "w+")
 base_list=[]
 q_times_list=[]
 av_list=[]
-
+q_whole_start=time. time()
 #generating numbers, quicksorting, time measuring, appending 
 for i in range(number_of_numbers):
     x=random.randint(1,range_of_numbers)
@@ -66,7 +66,7 @@ for i in range(number_of_numbers):
     base_array=np.array(base_list)
     f.write("%d\r\n" % x)
     for j in range(100):
-        q_start=time. time()
+        q=time. time()
         sorted_array=bubble_sort(base_array)
         q_end=time. time()
         q_time=q_end-q_start
@@ -83,6 +83,9 @@ for i in range(number_of_numbers):
             #f_out.write("%d\r\n" % item)
 #print(q_times_array)
 #print(av_array)
+q_whole_end=time. time()
+q_whole=q_whole_end-q_whole_start
+print(q_whole)
 f_outb.close()
 f.close()
 f_times.close()
@@ -98,7 +101,7 @@ log_array=[]
 
 n_array=[]
 for n in range(1,number_of_numbers):
-    y=n**2/230
+    y=n**2/240
     n_array.append(y)
 #appending first element to array (0log(0))
 #log_array.insert(0,0)
@@ -111,7 +114,9 @@ plt.yticks(np.arange(0,0.002))
 plt.title("quicksort (list)")
 plt.xlabel("number of operations")
 plt.ylabel("time(s)")
-plt.plot(q_times_list, 'bo', n_array, 'r')
+plt.plot(q_times_list, 'bo', label='time')
+plt.plot(n_array, 'r', label='n^2')
+plt.legend(loc='upper left')
 plt.show()
 
 
